@@ -18,6 +18,8 @@ implementation {
     components Node;
     components new AMReceiverC(AM_PACK) as GeneralReceive;
 
+    
+
     Node -> MainC.Boot;
 
     Node.Receive -> GeneralReceive;
@@ -30,4 +32,10 @@ implementation {
 
     components CommandHandlerC;
     Node.CommandHandler -> CommandHandlerC;
+
+    components floodC as flood;
+    Node.flood -> floodC;
+
+    components NeighDiscovery as NeighDiscovery;
+    Node.NeighDiscovery -> NeighDiscovery;
 }

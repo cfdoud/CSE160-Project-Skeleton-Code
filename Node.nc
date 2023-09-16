@@ -22,6 +22,10 @@ module Node{
    uses interface SimpleSend as Sender;
 
    uses interface CommandHandler;
+
+   uses interface NeighDiscovery;
+
+   uses interface flood;
 }
 
 implementation{
@@ -34,6 +38,11 @@ implementation{
       call AMControl.start();
 
       dbg(GENERAL_CHANNEL, "Booted\n");
+
+      bool testSampleModule = 0;
+      testSampleModule = call sampleMod.sampleFunction();
+      dbg(GENERAL_CHANNEL, "Sample module connected = %d \n", testSampleModule);
+
    }
 
    event void AMControl.startDone(error_t err){
